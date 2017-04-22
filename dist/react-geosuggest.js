@@ -506,6 +506,36 @@ module.exports = debounce;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
+ * @providesModule shallowCompare
+ */
+
+'use strict';
+
+var shallowEqual = require('fbjs/lib/shallowEqual');
+
+/**
+ * Does a shallow comparison for props and state.
+ * See ReactComponentWithPureRenderMixin
+ * See also https://facebook.github.io/react/docs/shallow-compare.html
+ */
+function shallowCompare(instance, nextProps, nextState) {
+  return (
+    !shallowEqual(instance.props, nextProps) ||
+    !shallowEqual(instance.state, nextState)
+  );
+}
+
+module.exports = shallowCompare;
+
+},{"fbjs/lib/shallowEqual":2}],5:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
  */
 
 'use strict';
@@ -522,7 +552,7 @@ function shallowCompare(instance, nextProps, nextState) {
 }
 
 module.exports = shallowCompare;
-},{"fbjs/lib/shallowEqual":2}],5:[function(require,module,exports){
+},{"fbjs/lib/shallowEqual":2}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1086,7 +1116,7 @@ Geosuggest.defaultProps = _defaults2.default;
 
 exports.default = Geosuggest;
 
-},{"./defaults":6,"./filter-input-attributes":7,"./input":8,"./prop-types":9,"./suggest-list":11,"classnames":1,"lodash.debounce":3}],6:[function(require,module,exports){
+},{"./defaults":7,"./filter-input-attributes":8,"./input":9,"./prop-types":10,"./suggest-list":12,"classnames":1,"lodash.debounce":3}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1129,7 +1159,7 @@ exports.default = {
   ignoreTab: false
 };
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1159,7 +1189,7 @@ var allowedAttributes = ['autoFocus', 'disabled', 'form', 'formAction', 'formEnc
  * @return {Object} The filtered, allowed properties
  */
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1174,9 +1204,9 @@ var _react = (window.React);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _shallowCompare = require('react/lib/shallowCompare');
+var _reactAddonsShallowCompare = require('react-addons-shallow-compare');
 
-var _shallowCompare2 = _interopRequireDefault(_shallowCompare);
+var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
 var _classnames = require('classnames');
 
@@ -1270,7 +1300,7 @@ var Input = function (_React$Component) {
      * @return {Boolean} Update or not?
      */
     value: function shouldComponentUpdate(nextProps, nextState) {
-      return (0, _shallowCompare2.default)(this, nextProps, nextState);
+      return (0, _reactAddonsShallowCompare2.default)(this, nextProps, nextState);
     }
 
     /**
@@ -1365,7 +1395,7 @@ Input.defaultProps = {
 
 exports.default = Input;
 
-},{"./filter-input-attributes":7,"classnames":1,"react/lib/shallowCompare":4}],9:[function(require,module,exports){
+},{"./filter-input-attributes":8,"classnames":1,"react-addons-shallow-compare":4}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1416,7 +1446,7 @@ exports.default = {
   label: _react2.default.PropTypes.string
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1529,7 +1559,7 @@ SuggestItem.defaultProps = {
   suggest: {}
 };
 
-},{"classnames":1,"react/lib/shallowCompare":4}],11:[function(require,module,exports){
+},{"classnames":1,"react/lib/shallowCompare":5}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1666,5 +1696,5 @@ SuggestList.defaultProps = {
   suggests: []
 };
 
-},{"./suggest-item":10,"classnames":1,"react/lib/shallowCompare":4}]},{},[5])(5)
+},{"./suggest-item":11,"classnames":1,"react/lib/shallowCompare":5}]},{},[6])(6)
 });
